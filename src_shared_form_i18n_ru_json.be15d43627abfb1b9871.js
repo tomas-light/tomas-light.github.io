@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_solar_ti=self.webpackChunk_solar_ti||[]).push([["src_shared_form_i18n_ru_json"],{20:s=>{s.exports=JSON.parse('{"optional":"(опционально)"}')}}]);

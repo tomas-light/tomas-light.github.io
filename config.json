@@ -1,0 +1,14 @@
+{
+  "mockAuth": true,
+  "mockChat": true,
+
+  "mockClients": true,
+  "mockClientTypes": true,
+  "mockGroups": true,
+
+  "mockPets": false,
+  "mock_findPetsByStatus": false,
+
+  "mockUsers": true,
+  "mockUserUpdate": false
+}

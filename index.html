@@ -1,0 +1,203 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>TI Cloud</title><link rel="stylesheet" href="/globals.css"/><link rel="icon" href="/favicon.png"><link href="/main.css" rel="stylesheet"></head><body><style>:root {
+        --loader-background: radial-gradient(
+            63.69% 63.69% at 50% 50%,
+            rgb(0 0 0 / 0%) 0%,
+            rgb(0 0 0 / 30%) 91.26%
+          ),
+          #160c1f;
+      }
+
+      /* App Loader Styles */
+      #app-ti-loader {
+        --logo-color: #fff;
+        --logo-rectangle-color: #fe6e36;
+
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: var(--loader-background);
+
+        pointer-events: none;
+      }
+
+      #app-ti-loader__logo {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      /* Logo Styles */
+      .logo {
+        display: flex;
+        align-items: flex-end;
+      }
+
+      /* Logo Text Styles */
+      .logo__text-wrapper {
+        position: absolute;
+        padding-left: 180px;
+      }
+
+      .logo__text-container {
+        position: relative;
+        bottom: -20px;
+        height: fit-content;
+        overflow: hidden;
+      }
+
+      .logo__text {
+        transform: translateX(-100%);
+      }
+
+      /* Logo T Styles */
+      .logo-T {
+        position: relative;
+        width: 180px;
+        height: 180px;
+      }
+
+      .logo-T__item {
+        position: absolute;
+        display: block;
+        background-color: #fff;
+      }
+
+      .logo-T__top-bar {
+        width: 120px;
+        height: 60px;
+      }
+
+      .logo-T__center-bar {
+        left: 60px;
+        width: 60px;
+        height: 180px;
+      }
+
+      .logo-T__right-rect {
+        right: 0;
+        width: 60px;
+        height: 60px;
+      }
+
+      /*
+        Animation styles. Order:
+        Step 1. Move rectangle
+        Step 2. Move logo + show text
+        Step 3. Change rectangle color
+      */
+      #app-ti-loader {
+        --step-1-duration: 300ms;
+        --step-1-timing-function: ease;
+        --step-2-duration: 400ms;
+        --step-2-timing-function: ease;
+        --step-2-delay: var(--step-1-duration) /* 300ms */;
+        --step-3-duration: 300ms;
+        --step-3-rect-timing-function: ease;
+        --step-3-delay: 800ms; /* step-2-delay + step-2-duration + 100ms */
+        --move-logo-distance: -250px;
+
+        /* Note: total animation duration = 1400ms (need for script) */
+      }
+
+      #app-ti-loader__logo {
+        transition: all 600ms ease;
+      }
+
+      .logo-T__right-rect {
+        animation:
+          move-rectange-above var(--step-1-duration)
+            var(--step-1-timing-function) forwards,
+          change-rectangle-color var(--step-3-duration)
+            var(--step-3-rect-timing-function) forwards;
+        animation-delay: 0s, var(--step-3-delay);
+      }
+
+      .logo__text {
+        animation: show-logo-text var(--step-2-duration)
+          var(--step-2-timing-function) forwards;
+        animation-delay: var(--step-2-delay);
+      }
+
+      .logo {
+        animation: move-logo var(--step-2-duration)
+          var(--step-2-timing-function) forwards;
+        animation-delay: var(--step-2-delay);
+      }
+
+      /* step 1 */
+      @keyframes move-rectange-above {
+        0% {
+          transform: translateY(0);
+        }
+
+        100% {
+          transform: translateY(-60px);
+        }
+      }
+
+      /* step 2 – show logo */
+      @keyframes show-logo-text {
+        0% {
+          transform: translateX(-100%);
+        }
+
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes move-logo {
+        0% {
+          transform: translateX(0);
+        }
+
+        100% {
+          transform: translateX(var(--move-logo-distance));
+        }
+      }
+
+      /* step 3 */
+      @keyframes change-rectangle-color {
+        0% {
+          background: var(--logo-color);
+        }
+
+        100% {
+          background: var(--logo-rectangle-color);
+        }
+      }</style><style>/* Freeze logo state after showing the animation  */
+      #app-ti-loader.finished .logo-T__right-rect,
+      #app-ti-loader.finished .logo__text,
+      #app-ti-loader.finished .logo {
+        animation: none;
+      }
+      #app-ti-loader.finished .logo-T__right-rect {
+        transform: translateY(-60px);
+        background: var(--logo-rectangle-color);
+      }
+
+      #app-ti-loader.finished .logo__text {
+        transform: translateX(0);
+      }
+
+      #app-ti-loader.finished .logo {
+        transform: translateX(var(--move-logo-distance));
+      }</style><script>const APP_LOADER_DURATION = 1400;
+      window.APP_LOADER_ANIMATION_FINISHED = false;
+      window.onLoaderAnimationFinish = () => {
+        console.warn("React App doesn't initialized yet");
+      };
+
+      setTimeout(markAnimationFinished, APP_LOADER_DURATION);
+
+      function markAnimationFinished() {
+        window.APP_LOADER_ANIMATION_FINISHED = true;
+        window.onLoaderAnimationFinish();
+
+        const appLoader = document.getElementById('app-ti-loader');
+        appLoader.classList.add('finished');
+      }</script><noscript>You need to enable JavaScript to run this app.</noscript><main></main><div id="app-ti-loader"><div id="app-ti-loader__logo"><div class="logo"><div class="logo-T"><div class="logo-T__item logo-T__top-bar"></div><div class="logo-T__item logo-T__center-bar"></div><div class="logo-T__item logo-T__right-rect"></div></div><div class="logo__text-wrapper"><div class="logo__text-container"><img class="logo__text" src="/logo-text.svg" alt="TI Cloud"/></div></div></div></div></div><script defer="defer" src="/main.c645008a7bc07230a82c.js"></script></body></html>

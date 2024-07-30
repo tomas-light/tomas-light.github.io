@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_solar_ti=self.webpackChunk_solar_ti||[]).push([["src_shared_locale_i18n_en_json"],{3354:e=>{e.exports=JSON.parse('{"save":"Save","login":"Login","logout":"Logout","cancel":"Cancel"}')}}]);

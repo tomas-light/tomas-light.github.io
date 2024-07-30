@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_solar_ti=self.webpackChunk_solar_ti||[]).push([["src_pages_login_i18n_en_json"],{2880:e=>{e.exports=JSON.parse('{"title":"Super secure auth","login":"Login","fields":{"email":{"label":"Email","placeholder":"Please input your email"},"password":{"label":"Password","placeholder":"Please input password"}}}')}}]);

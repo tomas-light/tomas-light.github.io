@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_solar_ti=self.webpackChunk_solar_ti||[]).push([["src_pages_login_i18n_ru_json"],{8938:e=>{e.exports=JSON.parse('{"title":"Супер-пупер защита","login":"Войти","fields":{"email":{"label":"Почта","placeholder":"Пожалуста, введите вашу почту"},"password":{"label":"Пароль","placeholder":"Пожалуйста, введите ваш пароль"}}}')}}]);

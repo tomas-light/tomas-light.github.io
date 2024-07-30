@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_solar_ti=self.webpackChunk_solar_ti||[]).push([["src_features_antd-example-form_i18n_ru_json"],{3463:e=>{e.exports=JSON.parse('{"title":"Пример формы Antd + Yup","fields":{"name":{"label":"Имя","placeholder":"Введите имя"},"age":{"label":"Возраст","placeholder":"Введите возраст"}}}')}}]);
